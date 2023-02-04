@@ -8,6 +8,8 @@ using Walk = NZwalks.API.Models.DTO.Walk;
 
 namespace NZwalks.API.Controllers
 {
+    [ApiController]
+    [Route("Walks")]
     public class WalksController : Controller
     {
         private readonly IWalkRepository walkRepository;

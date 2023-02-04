@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using NZwalks.API.Data;
+using NZwalks.API.Models.Domain;
 using NZwalks.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args); // used to inject dependencies to service collection.
@@ -16,6 +17,7 @@ builder.Services.AddDbContext<NZwalksDbContext>(options =>
 });
 builder.Services.AddScoped<IRegionRepository,RegionRepository>();
 builder.Services.AddScoped<IWalkRepository,WalkRepository>();
+builder.Services.AddScoped<IWalkDifficultyRepository,WalkDifficultyRepository>();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 var app = builder.Build();
 
