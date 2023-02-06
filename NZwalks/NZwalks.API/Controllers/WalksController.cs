@@ -47,11 +47,11 @@ namespace NZwalks.API.Controllers
         [Route("Walk")]
         public async Task<IActionResult> AddWalkAsync([FromBody] AddWalkRequest addWalkRequest)
         {
-            if (! await ValidateAddWalkAsync(addWalkRequest))
-            {
-                return BadRequest(ModelState);
+            //if (! await ValidateAddWalkAsync(addWalkRequest))
+            //{
+            //    return BadRequest(ModelState);
 
-            }
+            //}
             //convert dto to domain object
             var walkDomain = new Models.Domain.Walk()
             {
@@ -71,10 +71,10 @@ namespace NZwalks.API.Controllers
         [Route("id:guid")]
         public async Task<IActionResult> UpdateWalkAsync([FromHeader] Guid id, [FromBody]  UpdatedWalkRequest updatedWalkRequest)
         {
-            if (!(await ValidateUpdateWalkAsync(updatedWalkRequest)))
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!(await ValidateUpdateWalkAsync(updatedWalkRequest)))
+            //{
+            //    return BadRequest(ModelState);
+            //}
             var DomainWalk = new NZwalks.API.Models.Domain.Walk()
             {
                 Length = updatedWalkRequest.Length,

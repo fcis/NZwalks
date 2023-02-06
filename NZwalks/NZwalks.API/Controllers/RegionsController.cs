@@ -4,6 +4,8 @@ using NZwalks.API.Models.DTO;
 using NZwalks.API.Repositories;
 using NZwalks.API.Models.Domain;
 using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace NZwalks.API.Controllers
 {
@@ -20,6 +22,7 @@ namespace NZwalks.API.Controllers
             this.mapper = mapper;
         }
         [HttpGet]
+        [Authorize(Roles = "reader")]
         public async Task <IActionResult> GetAllRegionsAsync()
         {
            var regions = await regionRepository.GetAllAsync();
@@ -43,10 +46,10 @@ namespace NZwalks.API.Controllers
         public async Task< IActionResult> AddRegionsAsync(AddRegionRequest addRegionRequest)
         {
             //Validate Request
-            if (!ValidateAddRegionAsync(addRegionRequest))
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ValidateAddRegionAsync(addRegionRequest))
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             //from dto  to domain 
             var Region = new Models.Domain.Region()
